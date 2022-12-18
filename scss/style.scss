@@ -231,3 +231,13 @@ $dropdown-padding-x: .25rem;
   height: 1.9375rem !important;
   font-size: 1em !important;
 }
+
+
+//Font Awesome
+$fa-font-path: "../fonts";
+$fa-font-size-base: 1rem;
+$fa-fw-width: calc(20em / 16);
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid";
+//@import "node_modules/@fortawesome/fontawesome-free/scss/brands";
