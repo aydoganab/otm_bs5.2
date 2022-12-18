@@ -1,0 +1,29 @@
+{
+  "name": "otm_bs52",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aydoganab/otm_bs5.2.git"
+  },
+  "author": "a.aydogan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aydoganab/otm_bs5.2/issues"
+  },
+  "homepage": "https://github.com/aydoganab/otm_bs5.2#readme",
+  "devDependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "browser-sync": "^2.27.10",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "jquery": "^3.6.2",
+    "sass": "^1.57.0"
+  }
+}

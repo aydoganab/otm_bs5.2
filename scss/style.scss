@@ -1,0 +1,233 @@
+//
+// Bring in Bootstrap
+//
+
+// Option 1
+//
+// Import all of Bootstrap's CSS
+
+// @import "node_modules/bootstrap/scss/bootstrap";
+
+// Option 2
+//
+// Place variable overrides first, then import just the styles you need. Note that some stylesheets are required no matter what.
+
+// Toggle global options
+// $enable-shadows: true;
+
+// Customize some defaults
+
+@import "colors";
+@import "node_modules/bootstrap/scss/functions";
+
+$body-bg: $gray-200;
+
+$link-color: #0a66c2;
+//$link-decoration: none;
+$link-shade-percentage: 0%;
+//$link-hover-decoration: none;
+
+$navbar-padding-y: 0;
+$navbar-brand-padding-y: 0;
+$navbar-nav-link-padding-x: 1rem;
+$navbar-dark-color: rgba($white, .75);
+$navbar-dark-hover-color: rgba($white, .95);
+
+$input-btn-focus-width:         1px;
+$input-btn-focus-color-opacity: .6;
+
+$form-label-margin-bottom:              .25rem;
+$form-label-font-size:                  0.875em;
+$form-label-font-style:                 null;
+$form-label-font-weight:                500;
+$form-label-color:                      null;
+
+$dropdown-padding-x: .25rem;
+
+// Required
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/maps";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/utilities";
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/reboot";
+
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/images";
+@import "node_modules/bootstrap/scss/containers";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/tables";
+@import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/transitions";
+@import "node_modules/bootstrap/scss/dropdown";
+@import "node_modules/bootstrap/scss/button-group";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar"; // Requires nav
+@import "node_modules/bootstrap/scss/card";
+// @import "node_modules/bootstrap/scss/breadcrumb";
+@import "node_modules/bootstrap/scss/accordion";
+// @import "node_modules/bootstrap/scss/pagination";
+@import "node_modules/bootstrap/scss/badge";
+@import "node_modules/bootstrap/scss/alert";
+@import "node_modules/bootstrap/scss/progress";
+@import "node_modules/bootstrap/scss/list-group";
+@import "node_modules/bootstrap/scss/close";
+// @import "node_modules/bootstrap/scss/toasts";
+@import "node_modules/bootstrap/scss/modal"; // Requires transitions
+@import "node_modules/bootstrap/scss/tooltip";
+@import "node_modules/bootstrap/scss/popover";
+// @import "node_modules/bootstrap/scss/carousel";
+//@import "node_modules/bootstrap/scss/spinners";
+@import "node_modules/bootstrap/scss/offcanvas"; // Requires transitions
+@import "node_modules/bootstrap/scss/placeholders";
+
+// Helpers
+@import "node_modules/bootstrap/scss/placeholders";
+
+// Utilities
+@import "node_modules/bootstrap/scss/utilities/api";
+
+
+//
+// Custom styles
+//
+
+.navbar-otm{
+  background-color: var(--bs-indigo);
+  --bs-navbar-brand-font-size: 1.7rem;
+  //--bs-navbar-nav-link-padding-x: 1rem;
+  --bs-navbar-padding-y: 0;
+
+  .navbar-nav{
+    --bs-nav-link-font-weight: 500;
+    //--bs-nav-link-padding-y: 0.625rem;
+    .nav-link{
+      &:hover{
+        background-color: shade-color($indigo, 7%);
+      }
+      &.active, &.show {
+        background-color: shade-color($indigo, 20%);
+      }
+    }
+
+    .dropdown-menu{
+      border-color: tint-color($indigo, 70%);
+    }
+  }
+}
+
+/*a{
+  font-weight: 500;
+  &:hover{
+    text-decoration: underline;
+  }
+}*/
+
+
+.dropdown-toggle.no-caret:after{
+  display: none;
+}
+
+.dropdown-item{
+  border-radius: var(--bs-border-radius);
+}
+
+.alert-sm {
+  --bs-alert-padding-y: .5rem;
+}
+
+.btn-close-sm {
+  height: 0 !important;
+}
+
+
+//reduced buttons
+@each $color1, $value in $theme-colors {
+  $background: transparent;
+  $border: tint-color($value, 10%);
+  $color: $value;
+  $hover-background: tint-color($value,90%);
+  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount));
+  $hover-color: shade-color($value, 10%);
+  $active-background: tint-color($value, 80%);
+  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount));
+  $active-color: shade-color($value, 15%);
+  $disabled-background: $background;
+  $disabled-border: $border;
+  $disabled-color: tint-color($value, 10%);
+
+  .btn-reduced-#{$color1} {
+    --#{$prefix}btn-font-weight: 500;
+    --#{$prefix}btn-color: #{$color};
+    --#{$prefix}btn-bg: #{$background};
+    --#{$prefix}btn-border-color: #{$border};
+    --#{$prefix}btn-hover-color: #{$hover-color};
+    --#{$prefix}btn-hover-bg: #{$hover-background};
+    --#{$prefix}btn-hover-border-color: #{$hover-border};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+    --#{$prefix}btn-active-color: #{$active-color};
+    --#{$prefix}btn-active-bg: #{$active-background};
+    --#{$prefix}btn-active-border-color: #{$active-border};
+    --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+    --#{$prefix}btn-disabled-color: #{$disabled-color};
+    --#{$prefix}btn-disabled-bg: #{$disabled-background};
+    --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+  }
+}
+
+//flat buttons
+@each $color1, $value in $theme-colors {
+  $background: transparent;
+  $border: transparent;
+  $color: $value;
+  $hover-background: tint-color($value,90%);
+  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount));
+  $hover-color: shade-color($value, 10%);
+  $active-background: tint-color($value, 80%);
+  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount));
+  $active-color: shade-color($value, 15%);
+  $disabled-background: $background;
+  $disabled-border: $border;
+  $disabled-color: tint-color($value, 10%);
+
+  .btn-flat-#{$color1} {
+    --#{$prefix}btn-font-weight: 500;
+    --#{$prefix}btn-color: #{$color};
+    --#{$prefix}btn-bg: #{$background};
+    --#{$prefix}btn-border-color: #{$border};
+    --#{$prefix}btn-hover-color: #{$hover-color};
+    --#{$prefix}btn-hover-bg: #{$hover-background};
+    --#{$prefix}btn-hover-border-color: #{$hover-border};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+    --#{$prefix}btn-active-color: #{$active-color};
+    --#{$prefix}btn-active-bg: #{$active-background};
+    --#{$prefix}btn-active-border-color: #{$active-border};
+    --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+    --#{$prefix}btn-disabled-color: #{$disabled-color};
+    --#{$prefix}btn-disabled-bg: #{$disabled-background};
+    --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+  }
+}
+
+
+//icon buttons
+.btn-icon{
+  @extend .btn;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0!important;
+  position: relative;
+  z-index: 0;
+  width: 2.375rem;
+  height: 2.375rem;
+  font-size: 1.25em;
+}
+
+.btn-icon-sm{
+  width: 1.9375rem !important;
+  height: 1.9375rem !important;
+  font-size: 1em !important;
+}
