@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="TR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/otm_bs52.css" rel="stylesheet">
+    <title>İTÜ KİMYA OTOMASYON</title>
+</head>
+<body>
+
+<!--modal-->
+<div class="modal" tabindex="-1" id="otm-modal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<!--logout confirm-->
+<div id="logout-confirm" class="d-none">
+    <div class="modal-header">
+        <h5 class="modal-title">Oturumu Kapat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <p class="text-center lead my-2">Oturum kapatılsın mı?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        <a href="../logout.php" class="btn btn-danger">Oturumu kapat</a>
+    </div>
+</div>
+
+<script src="assets/otm_bs52.js"></script>
+
+<div class="container-xxl px-0">
+    <div class="bg-white shadow pb-5 rounded-bottom">
+
+
+            <!--MENÜ-->
+        <nav class="navbar navbar-otm navbar-expand-lg navbar-dark" aria-label="Offcanvas navbar large">
+            <div class="container-xxl">
+                <a class="navbar-brand" href="#"><i class="fa-regular fa-life-ring"></i>tm</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#otmNavbar" aria-controls="offcanvasNavbar2">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="otmNavbar" aria-labelledby="offcanvasNavbar2Label" style="background-color: var(--bs-indigo)">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-white" id="offcanvasNavbar2Label"><i class="fa-regular fa-life-ring"></i>tm</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">ARAŞTIRMA</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">KIM 101/101E</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">KIM 101EL</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">LABSİS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">NMR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">YÖNETİCİ</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top: 0.3rem">
+                                    <img src="t_user.jpg" class="rounded-circle" style="max-height: 1.8rem">
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end rounded-0 rounded-bottom mt-0 border-top-0 shadow">
+                                    <li><h6 class="dropdown-header">Abdullah Aydoğan</h6></li>
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" title="Oturumu kapat"><i class="fa fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!--BREADCRUMB-->
+        <nav class="d-flex align-items-center py-2 px-3 bg-body">
+            <ol class="breadcrumb me-auto mb-0">
+                <li class="breadcrumb-item"><a href="./"><span class="d-sm-none"><i class="fa fa-home fa-lg"></i></span><span class="d-none d-sm-inline">ANA SAYFA</span></a></li>
+                <li class="breadcrumb-item"><a href="./">ARAŞTIRMA</a></li>
+                <li class="breadcrumb-item dropdown d-none d-md-inline">
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">ELN</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a href="#" class="dropdown-item"><i class="fa fa-gamepad fa-fw"></i> Sayfa 1</a></li>
+                        <li><a href="#" class="dropdown-item"><i class="fa fa-fw"></i> Sayfa 2</a></li>
+                        <li><a href="#" class="dropdown-item">Sayfa 3</a></li>
+                        <li><a href="#" class="dropdown-item">Sayfa 4</a></li>
+                    </ul>
+                </li>
+                <li class="breadcrumb-item d-none d-md-inline active">ELN Projects</li>
+            </ol>
+
+            <div class="dropdown d-none d-md-inline">
+                <a href="#" class="link-danger"><i class="far fa-lg fa-frown-open"></i></a>
+                <a href="#" class="ms-2 dropdown-toggle dropdown-toggle-no-caret" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-info-circle fa-lg"></i></a>
+                <div class="dropdown-menu dropdown-menu-end shadow border-0 p-0">
+                    <div class="alert alert-primary mb-0 p-2 text-center">
+                        <h6 class="alert-heading mb-0">Sayfa bilgileri</h6>
+                        <hr>
+                        <p><i class="fa fa-map-marker-alt"></i> genel &mdash; 7</p>
+                        <a href="#" class="btn btn-reduced-primary btn-sm rounded-pill py-0">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="d-md-none link-dark logout"><i class="fa fa-sign-out-alt fa-lg"></i></a>
+
+        </nav>
+
+        <!--INNER PAGE-->
+        <div class="container-fluid py-3">
+
+            <h1 class="page-title">COLORS</h1>
+            <h2 class="page-subtitle">Subtitle</h2>
+            <p>Pragraf text</p>
+
+            <div class="card">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer">
+                    Deneme
+                </div>
+            </div>
+
+            <form action="">
+                <label class="form-label">Deneme</label>
+                <input type="text" class="form-control">
+            </form>
+
+            <hr>
+
+            <div class="alert alert-toast alert-dismissible d-inline-flex align-items-center alert-toast-success">
+                <i class="fa fa-check-circle"></i>
+                <span class="mx-2">Deneme mesajı</span>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-toast alert-dismissible d-inline-flex align-items-center alert-toast-danger">
+                <i class="fa fa-exclamation-circle"></i>
+                <span class="mx-2">Deneme mesajı</span>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+            </div>
+
+            <hr>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+
+            <hr>
+
+            <button type="button" class="btn btn-secondary">Button</button>
+            <button type="button" class="btn btn-light">Button</button>
+            <button type="button" class="btn btn-danger">Button</button>
+
+            <hr>
+
+            <button type="button" class="bnt btn-sm btn btn-secondary">Button</button>
+            <button type="button" class="bnt btn-sm btn btn-primary">Button</button>
+            <button type="button" class="bnt btn-sm btn btn-success">Button</button>
+
+            <hr>
+
+            <button type="button" class="btn btn-reduced-secondary">BTN R Sec</button>
+            <button type="button" class="btn btn-reduced-primary">BTN R Pri</button>
+            <button type="button" class="btn btn-reduced-success">BTN R Pri</button>
+            <button type="button" class="btn btn-reduced-warning">BTN R Pri</button>
+            <button type="button" class="btn btn-reduced-danger">BTN R Pri</button>
+
+            <hr>
+
+            <button type="button" class="btn btn-flat-secondary">BTN R Sec</button>
+            <button type="button" class="btn btn-flat-primary">BTN R Pri</button>
+            <button type="button" class="btn btn-flat-success">BTN R Pri</button>
+            <button type="button" class="btn btn-flat-warning">BTN R Pri</button>
+            <button type="button" class="btn btn-flat-danger">BTN R Pri</button>
+
+            <hr>
+
+            <button type="button" class="btn-icon btn-icon-secondary"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon btn-icon-primary"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon btn-icon-danger"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon btn-icon-success"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon btn-icon-dark"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon btn-icon-warning"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon btn-icon-light"><i class="fa fa-upload"></i></button>
+
+            <hr>
+
+            <button type="button" class="btn-icon-sm btn-icon-secondary"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-primary"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-danger"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-success"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-dark"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-warning"><i class="fa fa-upload"></i></button>
+            <button type="button" class="btn-icon-sm btn-icon-light"><i class="fa fa-upload"></i></button>
+
+            <hr>
+
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-danger">Danger</button>
+            <button type="button" class="btn btn-outline-warning">Warning</button>
+            <button type="button" class="btn btn-outline-info">Info</button>
+            <button type="button" class="btn btn-outline-light">Light</button>
+            <button type="button" class="btn btn-outline-dark">Dark</button>
+
+            <hr>
+
+            <div class="card w-25 border-hover-primary">
+                <div class="card-body">
+                    Border hover
+                </div>
+            </div>
+
+            <hr>
+
+            <button type="button" class="btn btn-secondary tooltip-elem" title="This is a tooltip">Tooltip</button>
+
+
+            <hr>
+            <h5>Scroll Bar</h5>
+            <div style="width: 250px; height: 250px" class="border overflow-auto">
+                <div style="height: 500px;">sdfsdf</div>
+            </div>
+
+            <hr>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    The current link item
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+            </div>
+
+            <hr>
+
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">City</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid city.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom04" class="form-label">State</label>
+                    <select class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom05" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+
+            <hr>
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert—check it out!
+            </div>
+            <div class="alert alert-secondary" role="alert">
+                A simple secondary alert—check it out!
+            </div>
+            <div class="alert alert-success" role="alert">
+                A simple success alert—check it out!
+            </div>
+            <div class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
+            <div class="alert alert-warning" role="alert">
+                A simple warning alert—check it out!
+            </div>
+            <div class="alert alert-info" role="alert">
+                A simple info alert—check it out!
+            </div>
+            <div class="alert alert-light" role="alert">
+                A simple light alert—check it out!
+            </div>
+            <div class="alert alert-dark" role="alert">
+                A simple dark alert—check it out!
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $('.logout').click(function (e) {
+        e.preventDefault();
+        $('.modal-content').html($('#logout-confirm').html());
+        $('#otm-modal').modal('show');
+    });
+
+    $(function () {
+        $('.tooltip-elem').tooltip();
+    });
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
+
+</body>
+</html>

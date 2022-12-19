@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="TR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/otm_bs52.css" rel="stylesheet">
+    <script src="assets/otm_bs52.js"></script>
+    <title>İTÜ KİMYA OTOMASYON</title>
+    <style>
+        .login-bg{
+            background-image: linear-gradient(to bottom, #09203f 0%, #2f5fa0 100%);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+<div class="position-absolute w-100 pt-2 text-center" style="z-index: 1">
+    <h1 class="display-4"><i class="fa fa-life-ring text-danger"></i>tm</h1>
+    <h1 class="display-5 d-none d-md-block">İTÜ KİMYA OTOMASYON</h1>
+    <p class="display-6 d-md-none">İTÜ KİMYA OTOMASYON</p>
+</div>
+
+<div class="d-table position-absolute w-100 h-100">
+    <div class="d-table-cell align-middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-7 col-sm-9 col-11">
+                    <form id="loginForm" method="get" action="home.html" novalidate>
+                        <div class="form-floating mb-2">
+                            <input type="email" id="eposta" class="form-control" placeholder="Eposta adresiniz" required>
+                            <label for="eposta">Eposta adresiniz</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="password" id="sfr" class="form-control" placeholder="Şifreniz" required>
+                            <label for="sfr">Şifreniz</label>
+                        </div>
+                        <div class="mb-2">
+                            <button type="submit" class="btn btn-primary w-100 btn-lg py-2">Oturum Aç</button>
+                        </div>
+                        <p><a href="sifre_hatirlat.php"><i class="fa fa-question-circle"></i> Şifremi Bilmiyorum/Unuttum</a></p>
+                        <input type="hidden" class="rp" name="rp" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom d-none d-sm-block">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a href="#" class="nav-link">İTÜ</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Fen-Edebiyat Fakültesi</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Kimya Bölümü</a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

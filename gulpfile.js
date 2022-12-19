@@ -17,6 +17,9 @@ gulp.task('sass', function () {
         .pipe(csso({comments:false}))
         .pipe(rename('otm_bs52.min.css'))
         .pipe(gulp.dest('app/assets'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
 //JS
@@ -27,18 +30,36 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(rename('otm_bs52.min.js'))
         .pipe(gulp.dest("app/assets"))
-        //.pipe(gulp.dest("../otmnew/o/js"))
-        //.pipe(browserSync.reload({
-            //stream: true
-        //}))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
 //FA
 gulp.task('fa', function () {
     return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/!(*brands*)')
         .pipe(gulp.dest("app/fonts"))
-        //.pipe(gulp.dest("../otmnew/o/fonts"))
-        //.pipe(browserSync.reload({
-            //stream: true
-        //}))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
+
+//BrowserSync
+gulp.task('browserSync', function () {
+    browserSync.init({
+        server: {
+            baseDir: ['./app'],
+            index: 'index.html',
+            watchEvents: ["add", "change", 'unlink']
+        }
+    });
+});
+
+//Watch
+gulp.task('watch', function () {
+    gulp.watch('scss/*.scss', gulp.series('sass'));
+    gulp.watch("app/*.html").on("change", browserSync.reload);
+});
+
+//DEFAULT
+gulp.task('default', gulp.series('sass', 'js', 'fa', gulp.parallel('browserSync', 'watch')));

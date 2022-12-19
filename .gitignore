@@ -1,3 +1,4 @@
 /node_modules/
 /.idea/
-/app/
+/app/assets/
+/app/fonts/
