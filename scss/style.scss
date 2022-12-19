@@ -53,6 +53,7 @@ $form-label-font-size:                  0.875em;
 $form-label-font-style:                 null;
 $form-label-font-weight:                500;
 $form-label-color:                      null;
+$input-bg: $white;
 
 $dropdown-padding-x: .25rem;
 
@@ -239,19 +240,58 @@ $dropdown-padding-x: .25rem;
   z-index: 0;
   width: 2.375rem;
   height: 2.375rem;
-  font-size: 1.25em;
+
+  &::before{
+    border-radius: 50%;
+    content: '';
+    opacity: 0;
+    position: absolute;
+    transition-duration: .15s;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: scale(0);
+    transition-property: transform, opacity;
+  }
+
+  &:hover, &:active, &.active {
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:focus, &.focus {
+    outline: 0;
+  }
 }
 
 .btn-icon-sm{
   @extend .btn-icon;
   width: 1.9375rem !important;
   height: 1.9375rem !important;
-  font-size: 1em !important;
 }
 
-@each $color1, $value in $theme-colors {
-  .btn-icon-#{$color1}{
-    @extend .btn-#{$color1};
+@each $color, $value in $theme-colors {
+  .btn-icon-#{$color} {
+    color: tint-color($value, 1%);
+
+    &::before {
+      border: 1px solid tint-color($value, 80%);
+      background-color: tint-color($value, 80%);
+    }
+
+    &:hover, &:active, &.active {
+      color: shade-color($value, 25%);
+    }
+
+    &:focus, &.focus, &.show {
+      background-color: tint-color($value, 80%);
+      box-shadow: 0 0 0 $input-btn-focus-width tint-color($value, 75%);
+    }
   }
 }
 

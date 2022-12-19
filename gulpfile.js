@@ -17,6 +17,7 @@ gulp.task('sass', function () {
         .pipe(csso({comments:false}))
         .pipe(rename('otm_bs52.min.css'))
         .pipe(gulp.dest('app/assets'))
+        .pipe(gulp.dest('../otmnew/o/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -30,6 +31,7 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(rename('otm_bs52.min.js'))
         .pipe(gulp.dest("app/assets"))
+        .pipe(gulp.dest('../otmnew/o/js'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -39,6 +41,7 @@ gulp.task('js', function () {
 gulp.task('fa', function () {
     return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/!(*brands*)')
         .pipe(gulp.dest("app/fonts"))
+        .pipe(gulp.dest('../otmnew/o/fonts'))
         .pipe(browserSync.reload({
             stream: true
         }))
