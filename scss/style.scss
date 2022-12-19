@@ -23,6 +23,12 @@ $enable-important-utilities: true;
 
 $font-size-root: 16px;
 $body-bg: $gray-100;
+$body-color: $gray-900;
+
+$border-radius:               .5rem;
+$border-radius-sm:            .375rem;
+$border-radius-lg:            .625rem;
+$border-radius-pill:          50rem;
 
 $display-font-sizes: (
         1: 4rem,
@@ -32,6 +38,8 @@ $display-font-sizes: (
         5: 2rem,
         6: 1.5rem
 );
+
+
 
 $link-color: $primary;
 $link-hover-color: shift-color($link-color, 40%);
@@ -55,7 +63,22 @@ $form-label-font-weight:                500;
 $form-label-color:                      null;
 $input-bg: $white;
 
-$dropdown-padding-x: .25rem;
+$dropdown-padding-y: 0.5rem;
+$dropdown-padding-x: 0.5rem;
+$dropdown-border-radius: $border-radius;
+$dropdown-item-padding-y: 0.5rem;
+$dropdown-link-hover-bg: $gray-200;
+$dropdown-link-active-bg: $gray-400;
+$dropdown-link-active-color: $body-color;
+
+//modal
+$modal-backdrop-opacity: 0.5;
+$modal-header-padding: 0.625rem 1rem;
+$modal-fade-transform: scale(.8);
+
+//close button
+$btn-close-focus-shadow: none;
+$btn-close-focus-opacity: 0.85;
 
 // Required
 @import "node_modules/bootstrap/scss/variables";
@@ -105,6 +128,19 @@ $dropdown-padding-x: .25rem;
 //
 // Custom styles
 //
+
+//html font size in small devices
+@include media-breakpoint-down(md){
+  html{
+    font-size: 15px !important;
+  }
+}
+
+@include media-breakpoint-down(sm){
+  html{
+    font-size: 14px !important;
+  }
+}
 
 .navbar-otm{
   background-color: var(--bs-indigo);
@@ -240,33 +276,6 @@ $dropdown-padding-x: .25rem;
   z-index: 0;
   width: 2.375rem;
   height: 2.375rem;
-
-  &::before{
-    border-radius: 50%;
-    content: '';
-    opacity: 0;
-    position: absolute;
-    transition-duration: .15s;
-    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-    z-index: -1;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    transform: scale(0);
-    transition-property: transform, opacity;
-  }
-
-  &:hover, &:active, &.active {
-    &::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  &:focus, &.focus {
-    outline: 0;
-  }
 }
 
 .btn-icon-sm{
@@ -275,23 +284,38 @@ $dropdown-padding-x: .25rem;
   height: 1.9375rem !important;
 }
 
-@each $color, $value in $theme-colors {
-  .btn-icon-#{$color} {
-    color: tint-color($value, 1%);
+@each $color1, $value in $theme-colors {
 
-    &::before {
-      border: 1px solid tint-color($value, 80%);
-      background-color: tint-color($value, 80%);
-    }
+  $background: transparent;
+  $border: transparent;
+  $color: $value;
+  $hover-background: tint-color($value,90%);
+  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount));
+  $hover-color: shade-color($value, 10%);
+  $active-background: tint-color($value, 80%);
+  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount));
+  $active-color: shade-color($value, 10%);
+  $disabled-background: $background;
+  $disabled-border: $border;
+  $disabled-color: tint-color($value, 10%);
 
-    &:hover, &:active, &.active {
-      color: shade-color($value, 25%);
-    }
+  .btn-icon-#{$color1} {
 
-    &:focus, &.focus, &.show {
-      background-color: tint-color($value, 80%);
-      box-shadow: 0 0 0 $input-btn-focus-width tint-color($value, 75%);
-    }
+    --#{$prefix}btn-color: #{$color};
+    --#{$prefix}btn-bg: #{$background};
+    --#{$prefix}btn-border-color: #{$border};
+    --#{$prefix}btn-hover-color: #{$hover-color};
+    --#{$prefix}btn-hover-bg: #{$hover-background};
+    --#{$prefix}btn-hover-border-color: #{$hover-border};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+    --#{$prefix}btn-active-color: #{$active-color};
+    --#{$prefix}btn-active-bg: #{$active-background};
+    --#{$prefix}btn-active-border-color: #{$active-border};
+    --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+    --#{$prefix}btn-disabled-color: #{$disabled-color};
+    --#{$prefix}btn-disabled-bg: #{$disabled-background};
+    --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+
   }
 }
 
@@ -389,6 +413,18 @@ $dropdown-padding-x: .25rem;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: inset 7px 10px 12px #f0f0f0;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.table-td-middle {
+  tbody{
+    th, td {
+      vertical-align: middle;
+    }
   }
 }
 

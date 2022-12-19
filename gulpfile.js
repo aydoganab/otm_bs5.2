@@ -62,6 +62,7 @@ gulp.task('browserSync', function () {
 gulp.task('watch', function () {
     gulp.watch('scss/*.scss', gulp.series('sass'));
     gulp.watch("app/*.html").on("change", browserSync.reload);
+    gulp.watch("app/assets/*.*").on("change", browserSync.reload);
 });
 
 //DEFAULT
