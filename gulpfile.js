@@ -14,6 +14,7 @@ gulp.task('sass', function () {
         .pipe(autoprefixer({browserlist: [">= 1%", "last 1 major version", "not dead", "Chrome >= 60", "Firefox >= 60", "Edge >= 16", "iOS >= 10", "Safari >= 10", "Android >= 6", "not Explorer <= 11"]}))
         .pipe(rename('otm_bs52.css'))
         .pipe(gulp.dest('app/assets'))
+        .pipe(gulp.dest('../otmnew/o/css'))
         .pipe(csso({comments:false}))
         .pipe(rename('otm_bs52.min.css'))
         .pipe(gulp.dest('app/assets'))
