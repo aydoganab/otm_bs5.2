@@ -22,7 +22,7 @@ $enable-important-utilities: true;
 @import "colors";
 
 $font-size-root: 16px;
-$body-bg: $gray-100;
+$body-bg: #f3f2ef;
 $body-color: $gray-900;
 
 $border-radius:               .5rem;
@@ -148,7 +148,7 @@ $nav-tabs-link-active-color: $gray-900;
   }
 }
 
-$navbar-otm-bg:$teal-700;
+$navbar-otm-bg:$purple-500;
 .navbar-otm{
   background-color: $navbar-otm-bg;
   --bs-navbar-brand-font-size: 1.7rem;
@@ -301,12 +301,12 @@ a.dropdown-toggle.show {
   $background: transparent;
   $border: transparent;
   $color: $value;
-  $hover-background: tint-color($value,90%);
+  $hover-background: tint-color($value,80%);
   $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount));
-  $hover-color: shade-color($value, 10%);
-  $active-background: tint-color($value, 80%);
+  $hover-color: shade-color($value, 15%);
+  $active-background: tint-color($value, 70%);
   $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount));
-  $active-color: shade-color($value, 10%);
+  $active-color: shade-color($value, 17%);
   $disabled-background: $background;
   $disabled-border: $border;
   $disabled-color: tint-color($value, 10%);
