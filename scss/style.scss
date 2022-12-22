@@ -52,6 +52,8 @@ $navbar-brand-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
 $navbar-dark-color: rgba($white, .75);
 $navbar-dark-hover-color: rgba($white, .95);
+$navbar-dark-toggler-border-color: none;
+$navbar-toggler-focus-width: 0;
 
 $input-btn-focus-width:         1px;
 $input-btn-focus-color-opacity: .6;
@@ -177,6 +179,10 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
       border-color: tint-color($navbar-otm-bg, 70%);
     }
   }
+}
+
+#navbar-otm-offcanvas{
+  background-color: $navbar-otm-bg;
 }
 
 /*a{
