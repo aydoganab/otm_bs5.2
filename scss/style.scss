@@ -158,9 +158,12 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
   background-color: transparent;
   --bs-navbar-brand-font-size: 1.7rem;
   //--bs-navbar-nav-link-padding-x: 1rem;
-  --bs-navbar-padding-y: 0;
   background-image: linear-gradient(to bottom, rgba($navbar-otm-bg-rgb, 1), rgba($navbar-otm-bg-rgb, 0.95));
 
+  --bs-navbar-padding-y: 0;
+  @include media-breakpoint-down(lg){
+    --bs-navbar-padding-y: 0.25rem;
+  }
 
   .navbar-nav{
     --bs-nav-link-font-weight: 500;
