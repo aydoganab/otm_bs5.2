@@ -88,7 +88,12 @@ $nav-tabs-link-hover-border-color: shade-color($light, 10%);
 $nav-tabs-link-active-bg: shade-color($light, 10%);
 $nav-tabs-link-active-color: $gray-900;
 
-$tooltip-opacity: .8;
+//tooltip
+$tooltip-opacity: 1;
+$tooltip-bg: rgba(60,64,67,.9);
+$tooltip-arrow-color: $tooltip-bg;
+$tooltip-border-radius:             $border-radius*.5;
+
 
 // Required
 @import "node_modules/bootstrap/scss/variables";
@@ -475,6 +480,10 @@ small, .small {
   }
 }
 
+//tooltip
+.tooltip .tooltip-arrow{
+  display: none !important;
+}
 
 //Font Awesome
 $fa-font-path: "../fonts";
