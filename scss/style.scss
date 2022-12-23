@@ -94,6 +94,9 @@ $tooltip-bg: rgba(60,64,67,.9);
 $tooltip-arrow-color: $tooltip-bg;
 $tooltip-border-radius:             $border-radius*.5;
 
+//Buttons
+$btn-transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+
 
 // Required
 @import "node_modules/bootstrap/scss/variables";
@@ -166,13 +169,10 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
   background-image: linear-gradient(to bottom, rgba($navbar-otm-bg-rgb, 1), rgba($navbar-otm-bg-rgb, 0.95));
 
   --bs-navbar-padding-y: 0;
-  @include media-breakpoint-down(lg){
-    --bs-navbar-padding-y: 0.25rem;
-  }
 
   .navbar-nav{
     --bs-nav-link-font-weight: 500;
-    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-padding-y: 0.75rem;
     .nav-link{
 
       &:hover{
