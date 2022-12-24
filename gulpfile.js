@@ -18,7 +18,7 @@ gulp.task('sass', function () {
         .pipe(csso({comments:false}))
         .pipe(rename('otm_bs52.min.css'))
         .pipe(gulp.dest('app/assets'))
-        .pipe(gulp.dest('../otmnew/o/css'))
+        //.pipe(gulp.dest('../otmnew/o/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -32,7 +32,7 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(rename('otm_bs52.min.js'))
         .pipe(gulp.dest("app/assets"))
-        .pipe(gulp.dest('../otmnew/o/js'))
+        //.pipe(gulp.dest('../otmnew/o/js'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -42,11 +42,29 @@ gulp.task('js', function () {
 gulp.task('fa', function () {
     return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/!(*brands*)')
         .pipe(gulp.dest("app/fonts"))
-        .pipe(gulp.dest('../otmnew/o/fonts'))
+        //.pipe(gulp.dest('../otmnew/o/fonts'))
         .pipe(browserSync.reload({
             stream: true
         }))
 });
+
+//move assets
+gulp.task('move_css', function () {
+    return gulp.src('app/assets/*.css')
+        .pipe(gulp.dest('../otmnew/o/css'))
+});
+
+gulp.task('move_js', function () {
+    return gulp.src('app/assets/*.min.js')
+        .pipe(gulp.dest('../otmnew/o/js'))
+});
+
+gulp.task('move_fonts', function () {
+    return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/!(*brands*)')
+        .pipe(gulp.dest('../otmnew/o/fonts'))
+});
+
+gulp.task('move-assets', gulp.series('move_css','move_js','move_fonts'));
 
 //BrowserSync
 gulp.task('browserSync', function () {
