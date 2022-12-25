@@ -15,6 +15,7 @@
 // Toggle global options
 // $enable-shadows: true;
 $enable-important-utilities: true;
+$enable-negative-margins: true;
 
 // Customize some defaults
 
@@ -22,6 +23,7 @@ $enable-important-utilities: true;
 @import "colors";
 
 $font-size-root: 16px;
+
 $body-bg: #f3f2ef;
 $body-color: $gray-900;
 
@@ -155,13 +157,13 @@ $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, bord
     font-size: 15px !important;
   }
 }
+*/
 
 @include media-breakpoint-down(sm){
   html{
-    font-size: 14px !important;
+    font-size: 15px !important;
   }
 }
- */
 
 $navbar-otm-bg:#712cf9;
 $navbar-otm-bg-rgb: rgb(113,44,249);
@@ -174,8 +176,14 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
   --bs-navbar-padding-y: 0;
 
   .navbar-nav{
+
     --bs-nav-link-font-weight: 500;
     --bs-nav-link-padding-y: 1rem;
+
+    @include media-breakpoint-down(lg){
+      --bs-nav-link-padding-x: 1rem;
+    }
+
     .nav-link{
 
       &:hover{
