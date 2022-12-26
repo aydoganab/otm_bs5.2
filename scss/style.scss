@@ -53,9 +53,18 @@ $caret-width: .25rem;
 $navbar-padding-y: 0;
 $navbar-brand-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
+
 $navbar-dark-color: rgba($white, .75);
 $navbar-dark-hover-color: rgba($white, .95);
 $navbar-dark-toggler-border-color: none;
+
+$navbar-light-color:                rgba($black, .85);
+$navbar-light-hover-color:          rgba($black, .9);
+$navbar-light-active-color:         rgba($black, .9);
+
+$navbar-light-brand-color: $indigo-600;
+$navbar-light-brand-hover-color: $indigo-700;
+
 $navbar-light-toggler-border-color: none;
 $navbar-toggler-focus-width: 0;
 $navbar-toggler-padding-y: 1rem;
@@ -186,7 +195,7 @@ $navbar-otm-bg: $gray-200;
     .nav-link{
 
       &:hover{
-        background-color: shift-color($navbar-otm-bg, -50%);
+        background-color: shift-color($navbar-otm-bg, -40%);
       }
       &.active, &.show {
         background-color: $navbar-otm-bg;
