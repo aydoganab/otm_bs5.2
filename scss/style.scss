@@ -49,12 +49,14 @@ $link-decoration: none;
 
 $caret-width: .25rem;
 
+//navbar
 $navbar-padding-y: 0;
 $navbar-brand-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
 $navbar-dark-color: rgba($white, .75);
 $navbar-dark-hover-color: rgba($white, .95);
 $navbar-dark-toggler-border-color: none;
+$navbar-light-toggler-border-color: none;
 $navbar-toggler-focus-width: 0;
 $navbar-toggler-padding-y: 1rem;
 
@@ -98,7 +100,7 @@ $tooltip-arrow-color: $tooltip-bg;
 $tooltip-border-radius:             $border-radius*.5;
 
 //Buttons
-$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
 
 // Required
@@ -148,30 +150,27 @@ $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, bord
 
 //
 // Custom styles
-//
-
 //html font size in small devices
-/*
 @include media-breakpoint-down(md){
   html{
     font-size: 15px !important;
   }
 }
-*/
 
 @include media-breakpoint-down(sm){
   html{
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 }
 
-$navbar-otm-bg:#712cf9;
-$navbar-otm-bg-rgb: rgb(113,44,249);
+
+$navbar-otm-bg: $gray-200;
 .navbar-otm{
   background-color: transparent;
   --bs-navbar-brand-font-size: 1.7rem;
   //--bs-navbar-nav-link-padding-x: 1rem;
-  background-image: linear-gradient(to bottom, rgba($navbar-otm-bg-rgb, 1), rgba($navbar-otm-bg-rgb, 0.95));
+
+  //background-image: linear-gradient(to bottom, rgba($navbar-otm-bg, 1), rgba($navbar-otm-bg, 0.9));
 
   --bs-navbar-padding-y: 0;
 
@@ -187,15 +186,17 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
     .nav-link{
 
       &:hover{
-        background-color: shade-color($navbar-otm-bg, 7%);
+        background-color: shift-color($navbar-otm-bg, -50%);
       }
       &.active, &.show {
-        background-color: shade-color($navbar-otm-bg, 20%);
+        background-color: $navbar-otm-bg;
       }
     }
 
     .dropdown-menu{
-      border-color: tint-color($navbar-otm-bg, 70%);
+      //background-color: $navbar-otm-bg;
+      border-color: shade-color($navbar-otm-bg, 5%);
+
     }
   }
 }
@@ -204,12 +205,10 @@ $navbar-otm-bg-rgb: rgb(113,44,249);
   background-color: $navbar-otm-bg;
 }
 
-.breadcrumb-otm>.breadcrumb-item>a{
-  color: $navbar-otm-bg;
-  &:hover{
-    color: shade-color($navbar-otm-bg, 70%);
-  }
+.nav-breadcrumb-otm{
+  background-color: $navbar-otm-bg;
 }
+
 
 /*a{
   font-weight: 500;
