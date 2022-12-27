@@ -173,7 +173,8 @@ $tooltip-border-radius:             $border-radius*.5;
 }
 
 
-$navbar-otm-bg: $gray-200;
+//$navbar-otm-bg: $gray-200;
+$navbar-otm-bg: shift-color(#eaf1fb, 3%);
 .navbar-otm{
   background-color: transparent;
   --bs-navbar-brand-font-size: 1.7rem;
