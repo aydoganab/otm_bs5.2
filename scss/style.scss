@@ -89,8 +89,9 @@ $dropdown-link-active-color: $body-color;
 
 //modal
 $modal-backdrop-opacity: 0.5;
-$modal-header-padding: 0.625rem 1rem;
+$modal-header-padding: 0.5rem 1rem;
 $modal-fade-transform: scale(.8);
+$modal-header-border-width: 0;
 
 //close button
 $btn-close-focus-shadow: none;
@@ -107,6 +108,8 @@ $tooltip-opacity: 1;
 $tooltip-bg: rgba(60,64,67,.9);
 $tooltip-arrow-color: $tooltip-bg;
 $tooltip-border-radius:             $border-radius*.5;
+
+
 
 //Buttons
 //$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -217,6 +220,11 @@ $navbar-otm-bg: shift-color(#eaf1fb, 3%);
 
 .nav-breadcrumb-otm{
   background-color: $navbar-otm-bg;
+}
+
+.modal-header {
+  @extend .modal-header;
+  background-color: shift-color(#f2f6fc, -30%);
 }
 
 
